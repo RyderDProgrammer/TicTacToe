@@ -86,9 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClick(View v)
     {
+        //Created an array of buttons like you had mentioned towards the end of class.
         Button[] buttonArray = {buttonTL,buttonTM,buttonTR,buttonML,buttonMM,buttonMR,buttonBL,buttonBM,buttonBR};
         //Tried to make it just a new button constructor of new Button() but for some reason it didn't like that.
         Button tempButton = buttonTL;
+        //Runs through the array and finds whatever button was clicked on and sets temp to be that button.
         for(int i = 0; i < buttonArray.length; i++)
         {
             if(v.equals(buttonArray[i]))
@@ -97,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if(tempButton.getText().toString().equals(""))
+        if(tempButton.getText() == (""))
         {
-            if(player.equals("X"))
+            if(player == ("X"))
             {
                 tempButton.setText("X");
                 player = "O";
