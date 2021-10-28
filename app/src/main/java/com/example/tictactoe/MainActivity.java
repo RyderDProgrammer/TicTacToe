@@ -2,26 +2,16 @@ package com.example.tictactoe;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
-
-    //Wanted to be a pain so I left the brackets like so.
-    /*private static final int[] BUTTONS = {
-            R.id.buttonTL,
-            R.id.buttonTM,
-            R.id.buttonTR,
-            R.id.buttonML,
-            R.id.buttonMM,
-            R.id.buttonMR,
-            R.id.buttonBL,
-            R.id.buttonBM,
-            R.id.buttonBM,
-    };*/
+public class MainActivity extends AppCompatActivity
+{
+    private Button[] BUTTONS;
     private Button buttonTL;
     private Button buttonTM;
     private Button buttonTR;
@@ -52,33 +42,23 @@ public class MainActivity extends AppCompatActivity {
         buttonBL = findViewById(R.id.buttonBL);
         buttonBM = findViewById(R.id.buttonBM);
         buttonBR = findViewById(R.id.buttonBR);
+        BUTTONS = new Button[] {buttonTL,buttonTM,buttonTR,buttonML,buttonMM,buttonMR,buttonBL,buttonBM,buttonBR};
         newGameButton = findViewById(R.id.newGameButton);
 
         player = "X";
         currTurn = findViewById(R.id.playerTurnTextView);
+
         resetGame();
     }
 
     private void resetGame()
     {
-        buttonTL.setText("");
-        buttonTL.setEnabled(true);
-        buttonTM.setText("");
-        buttonTM.setEnabled(true);
-        buttonTR.setText("");
-        buttonTR.setEnabled(true);
-        buttonML.setText("");
-        buttonML.setEnabled(true);
-        buttonMM.setText("");
-        buttonMM.setEnabled(true);
-        buttonMR.setText("");
-        buttonMR.setEnabled(true);
-        buttonBL.setText("");
-        buttonBL.setEnabled(true);
-        buttonBM.setText("");
-        buttonBM.setEnabled(true);
-        buttonBR.setText("");
-        buttonBR.setEnabled(true);
+        //Reduced down redundant code and made it into a for loop.
+        for(int i = 0; i < BUTTONS.length; i++)
+        {
+            BUTTONS[i].setText("");
+            BUTTONS[i].setEnabled(true);
+        }
 
         player = "X";
         currTurn.setText("Player X's turn");
@@ -111,12 +91,12 @@ public class MainActivity extends AppCompatActivity {
                 tempButton.setText("O");
                 player = "X";
             }
-            tempButton.setEnabled(false);
+            //tempButton.setEnabled(false);
 
             currTurn.setText("Player " + player + "'s turn");
         }
 
-        if (v.equals(newGameButton))
+        if (v == newGameButton)
         {
             resetGame();
         }
